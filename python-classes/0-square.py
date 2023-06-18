@@ -16,4 +16,8 @@ class Square:
     """class that defines a square
     """
     def __init__(self):
+        """The __init__ method.
+
+        Creates an instance of a square.
+        """
         pass
