@@ -29,11 +29,14 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         if position is not None:
-            if not isinstance(position, tuple) or
-            not all(isinstance(x, int) for x in position):
-                raise
-                TypeError("position must be a tuple of 2 positive integers")
+            positionok = True
+            if not isinstance(position, tuple):
+                positionok = False
+            if not all(isinstance(x, int) for x in position):
+                positionok = False
             if position[0] < 0 or position[1] < 0:
+                positionok = False
+            if not positionok:
                 raise
                 TypeError("position must be a tuple of 2 positive integers")
             self.__position = position
@@ -75,12 +78,17 @@ class Square:
         """The size setter.
         Set the new position of a square.
         """
-        if not isinstance(value, tuple) or
-        not all(isinstance(x, int) for x in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if value[0] < 0 or value[1] < 1:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
+        positionok = True
+        if not isinstance(position, tuple):
+            positionok = False
+        if not all(isinstance(x, int) for x in position):
+            positionok = False
+        if position[0] < 0 or position[1] < 0:
+            positionok = False
+        if not positionok:
+            raise
+            TypeError("position must be a tuple of 2 positive integers")
+        self.__position = position
 
     def my_print(self):
         """The my_print method.
