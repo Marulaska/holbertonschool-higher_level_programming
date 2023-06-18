@@ -12,6 +12,7 @@ Attributes:
     side (int): lenght of one side
 """
 
+
 class Square:
     """class that defines a square
     """
