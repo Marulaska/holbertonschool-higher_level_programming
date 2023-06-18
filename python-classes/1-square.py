@@ -16,7 +16,7 @@ Attributes:
 class Square:
     """class that defines a square
     """
-    __size = 1
+    __size = ()
 
     def __init__(self, newsize=None):
         """The __init__ method.
