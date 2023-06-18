@@ -278,3 +278,5 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,linux,vim,emacs
 
+# holberton main files
+*/*main.py
