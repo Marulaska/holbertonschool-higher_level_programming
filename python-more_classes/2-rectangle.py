@@ -12,7 +12,6 @@ Attributes:
     side (int): lenght of one side
 """
 
-
 class Rectangle:
     """class that defines a rectangle
     """
@@ -79,7 +78,7 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """The area method.
-        Calculates the area of a rectangle.
+        """The perimeter method.
+        Calculates the perimeter of a rectangle.
         """
         return (self.__width + self.__height) * 2
