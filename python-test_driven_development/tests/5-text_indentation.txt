@@ -4,12 +4,12 @@
 
 >>> text_indentation("Hola.")
 Hola.
-
+<BLANKLINE>
 >>> text_indentation("Hola. Mundo.")
 Hola.
-
+<BLANKLINE>
 Mundo.
-
+<BLANKLINE>
 >>> text_indentation()
 Traceback (most recent call last):
 ...
