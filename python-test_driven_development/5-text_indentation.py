@@ -10,3 +10,5 @@ def text_indentation(text):
         if char in ['.', '?', ':']:
             print(line.strip(), end="\n\n")
             line = ""
+    if len(line) > 0:
+        print(line.strip(), end="\n\n")
