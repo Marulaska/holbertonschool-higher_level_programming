@@ -11,12 +11,12 @@ def matrix_divided(matrix, div):
         raise ZeroDivisionError("division by zero")
 
     new_matrix = []
-
+    mxerror = "matrix must be a matrix (list of lists) of integers/floats"
     for row in matrix:
         new_row = []
         for num in row:
             if type(num) not in [int, float]:
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError(mxerror)
             new_row.append(round(num / div, 2))
         new_matrix.append(new_row)
 
