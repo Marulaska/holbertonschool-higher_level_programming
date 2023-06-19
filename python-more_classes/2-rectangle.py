@@ -12,6 +12,7 @@ Attributes:
     side (int): lenght of one side
 """
 
+
 class Rectangle:
     """class that defines a rectangle
     """
