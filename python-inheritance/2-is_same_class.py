@@ -6,4 +6,8 @@ of the specified class ; otherwise False.
 
 
 def is_same_class(obj, a_class):
-    return type(obj) is a_class
+    is_same_class = isinstance(obj, a_class)
+    if is_same_class:
+        print("Yes")
+    else:
+        print("No")
