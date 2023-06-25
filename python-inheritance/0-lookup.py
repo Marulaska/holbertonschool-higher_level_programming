@@ -4,8 +4,9 @@ This function prints all attributes and methods of an object.
 
 Usage:
 lookup(obj)
-    
 """
+
+
 def lookup(obj):
     """
     lookup function implementation
