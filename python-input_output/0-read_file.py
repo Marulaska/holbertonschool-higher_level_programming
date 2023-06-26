@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-"""_summary_
+"""
+write_file(filename="", text=""):
 """
 
 
+
 def read_file(filename=""):
-    """0-read_file.py"""
+    """
+    write_file(filename="", text=""):
+    """
     with open(filename, 'r', encoding='utf-8') as file:
         content = file.read()
     print(content)
