@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-write_file(filename="", text=""):
+read file
 """
-
 
 
 def read_file(filename=""):
     """
-    write_file(filename="", text=""):
+    READ FILE
+    GET FILE TOP SDTOUT
     """
     with open(filename, 'r', encoding='utf-8') as file:
         content = file.read()
