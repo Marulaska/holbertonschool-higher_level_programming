@@ -49,6 +49,11 @@ Traceback (most recent call last):
 ...
 TypeError: num must be an integer
 
+>>> bg.integer_validator('num', True)
+Traceback (most recent call last):
+...
+TypeError: num must be an integer
+
 >>> bg.integer_validator('num', None)
 Traceback (most recent call last):
 ...
