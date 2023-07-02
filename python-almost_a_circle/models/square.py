@@ -28,8 +28,6 @@ class Square(Rectangle):
             f"({self.id}) {self.x}/{self.y} - " + \
             f"{self.width}"
 
-
-
     @property
     def size(self):
         """The width getter.
