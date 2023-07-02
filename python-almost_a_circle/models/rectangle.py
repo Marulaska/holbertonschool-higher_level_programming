@@ -37,6 +37,13 @@ class Rectangle(Base):
             raise ValueError(f"{field} must be >= 0")
         return True
 
+
+    def area(self):
+        """The area method.
+        Calculates the area of the rectangle.
+        """
+        return self.__height * self.__width
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """__init__ function
 
