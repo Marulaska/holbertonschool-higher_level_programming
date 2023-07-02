@@ -86,7 +86,7 @@ class Rectangle(Base):
 
         super().__init__(id)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updater using *args
         Args:
             1st argument should be the id attribute
@@ -95,16 +95,19 @@ class Rectangle(Base):
             4th argument should be the x attribute
             5th argument should be the y attribute
         """
-        if len(args) >= 1:
+        if args:
             self.id = args[0]
-        if len(args) >= 2:
-            self.__width = args[1]
-        if len(args) >= 3:
-            self.__height = args[2]
-        if len(args) >= 4:
-            self.__x = args[3]
-        if len(args) >= 5:
-            self.__y = args[4]
+            if len(args) >= 2:
+                self.__width = args[1]
+            if len(args) >= 3:
+                self.__height = args[2]
+            if len(args) >= 4:
+                self.__x = args[3]
+            if len(args) >= 5:
+                self.__y = args[4]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     @property
     def width(self):
