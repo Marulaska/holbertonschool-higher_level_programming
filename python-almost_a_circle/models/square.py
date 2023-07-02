@@ -20,6 +20,27 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
+    def update(self, *args, **kwargs):
+        """Updater using *args
+        Args:
+            1st argument should be the id attribute
+            2nd argument should be the size attribute
+            3th argument should be the x attribute
+            4th argument should be the y attribute
+        """
+        if args:
+            self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+                self.height = args[1]
+            if len(args) >= 3:
+                self.__x = args[2]
+            if len(args) >= 4:
+                self.__y = args[3]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def __str__(self):
         """The print method.
         Prints rectangle in stdout with the character _print_symbol_.
