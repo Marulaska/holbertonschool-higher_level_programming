@@ -49,6 +49,20 @@ class Square(Rectangle):
             f"({self.id}) {self.x}/{self.y} - " + \
             f"{self.width}"
 
+
+    def to_dictionary(self):
+        """to_dictionary
+
+        Returns:
+            json-type string
+        """
+        return {
+            'id': self.id,
+            'x': self.x,
+            'size': self.size,
+            'y': self.y,
+        }
+
     @property
     def size(self):
         """The width getter.
