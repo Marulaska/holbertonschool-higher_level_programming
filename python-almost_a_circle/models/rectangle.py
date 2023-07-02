@@ -37,6 +37,14 @@ class Rectangle(Base):
             raise ValueError(f"{field} must be >= 0")
         return True
 
+    def __str__(self):
+        """The print method.
+        Prints rectangle in stdout with the character _print_symbol_.
+        """
+        return f"[{self.__class__.__name__}] " + \
+            f"({self.id}) {self.__x}/{self.__y} - " + \
+            f"{self.__width}/{self.__height}"
+
     def area(self):
         """The area method.
         Calculates the area of the rectangle.
