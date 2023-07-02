@@ -19,3 +19,11 @@ class Square(Rectangle):
             id (int, optional): identifier. Defaults to None.
         """
         super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        """The print method.
+        Prints rectangle in stdout with the character _print_symbol_.
+        """
+        return f"[{self.__class__.__name__}] " + \
+            f"({self.id}) {self.x}/{self.y} - " + \
+            f"{self.width}"
