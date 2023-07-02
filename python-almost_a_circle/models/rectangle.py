@@ -17,52 +17,71 @@ class Rectangle(Base):
     __y = 0
 
     def __init__(self, width, height, x=0, y=0, id=None):
+
+        if self._intvalidator("width", width):
+            self.__width = width
+        if self._intvalidator("height", height):
+            self.__height = height
+        if self._intvalidator("x", x):
+            self.__x = x
+        if self._intvalidator("y", y):
+            self.__y = y
+
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+
+    def _intvalidator(self, field, value):
+        if not isinstance(value, int):
+            raise TypeError(f"{field} must be an integer")
+        if value <= 0 and (field == "width" or field == "height"):
+            raise ValueError(f"{field} must be > 0")
+        if value < 0 and (field == "x" or field == "y"):
+            raise ValueError(f"{field} must be >= 0")
+        return True
 
     @property
     def width(self):
-        """The size getter.
-        Retrieves the size of a square.
+        """The width getter.
+        Retrieves the width of a square.
         """
         return self.__width
 
     @width.setter
     def width(self, value):
-        self.__width = value
+        if self._intvalidator("width", value):
+            self.__width = value
 
     @property
     def height(self):
-        """The size getter.
-        Retrieves the size of a square.
+        """The height getter.
+        Retrieves the height of a square.
         """
         return self.__height
 
     @height.setter
     def height(self, value):
-        self.__height = value
+        if self._intvalidator("height", value):
+            self.__height = value
 
     @property
     def x(self):
-        """The size getter.
-        Retrieves the size of a square.
+        """The x getter.
+        Retrieves the x of a square.
         """
         return self.__x
 
     @x.setter
     def x(self, value):
-        self.__x = value
+        if self._intvalidator("x", value):
+            self.__x = value
 
     @property
     def y(self):
-        """The size getter.
-        Retrieves the size of a square.
+        """The y getter.
+        Retrieves the y of a square.
         """
         return self.__y
 
     @y.setter
     def y(self, value):
-        self.__y = value
+        if self._intvalidator("y", value):
+            self.__y = value
