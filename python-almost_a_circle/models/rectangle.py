@@ -43,6 +43,19 @@ class Rectangle(Base):
         """
         return self.__height * self.__width
 
+    def display(self):
+        """The display method.
+        Prints rectangle in stdout using the character #.
+        """
+        for y in range(self.__y):
+            print()
+        for i in range(self.__height):
+            for x in range(self.__x):
+                print(" ", end="")
+            for j in range(self.__width):
+                print("#", end="")
+            print()
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """__init__ function
 
