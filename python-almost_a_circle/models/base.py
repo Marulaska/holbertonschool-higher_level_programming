@@ -3,7 +3,7 @@
 """
 
 
-class Base:
+class Base():
     """Base attributes
     """
     __nb_objects = 0
