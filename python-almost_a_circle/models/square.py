@@ -29,6 +29,8 @@ class Square(Rectangle):
             4th argument should be the y attribute
         """
         if args:
+            if not isinstance(args[0], int):
+                raise TypeError("id must be an integer")
             self.id = args[0]
             if len(args) >= 2:
                 self.width = args[1]

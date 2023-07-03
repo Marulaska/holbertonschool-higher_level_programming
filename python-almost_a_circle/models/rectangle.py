@@ -97,6 +97,8 @@ class Rectangle(Base):
         """
         if args:
             self.id = args[0]
+            if not isinstance(args[0], int):
+                raise TypeError("id must be an integer")
             if len(args) >= 2:
                 self.__width = args[1]
             if len(args) >= 3:
