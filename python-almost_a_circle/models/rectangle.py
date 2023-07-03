@@ -120,7 +120,7 @@ class Rectangle(Base):
             'width': self.width,
             'id': self.id,
             'height': self.height,
-            'y': self.y,
+            'y': self.y
         }
 
     @property
