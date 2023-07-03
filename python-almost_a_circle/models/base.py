@@ -77,3 +77,20 @@ class Base():
             return instance
         else:
             return None
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r') as file:
+                json_string = file.read()
+                data = cls.from_json_string(json_string)
+                instances = []
+                for item in data:
+                    instance = cls.create(**item)
+                    if instance is not None:
+                        instances.append(instance)
+
+                return instances
+        except FileNotFoundError:
+            return []
