@@ -9,7 +9,8 @@ def list_division(my_list_1, my_list_2, list_length):
             dividend = my_list_1[i]
             divisor = my_list_2[i]
 
-            if not (isinstance(dividend, (int, float)) and isinstance(divisor, (int, float))):
+            if not (isinstance(dividend, (int, float))
+                    and isinstance(divisor, (int, float))):
                 raise TypeError("wrong type")
 
             if divisor == 0:
