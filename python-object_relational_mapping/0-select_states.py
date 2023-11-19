@@ -1,27 +1,31 @@
 #!/usr/bin/python3
-
 import sys
-from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table
+from sqlalchemy import create_engine, Column, Integer, String, MetaData
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
-user = sys.argv[1]
-passwd = sys.argv[2]
-db = sys.argv[3]
+Base = declarative_base()
 
-engine = create_engine(f"mysql://{user}:{passwd}@localhost/{db}?charset=utf8")
 
-metadata = MetaData()
-states = Table('states', metadata,
-               Column('id', Integer, primary_key=True),
-               Column('name', String(255)),
-               )
+class State(Base):
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), nullable=False)
 
-Session = sessionmaker(bind=engine)
-session = Session()
 
-result = session.query(states).order_by(states.c.id).all()
+if __name__ == "__main__":
+    user = sys.argv[1]
+    passwd = sys.argv[2]
+    db = sys.argv[3]
 
-for row in result:
-    print(f"({row.id}, '{row.name}')")
+    engine = create_engine(
+        f"mysql://{user}:{passwd}@localhost/{db}?charset=utf8")
 
-session.close()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    results = session.query(State).order_by(State.id).all()
+    for state in results:
+        print((state.id, state.name))
+
+    session.close()
