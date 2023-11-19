@@ -38,8 +38,11 @@ if __name__ == "__main__":
         conn.close()
         sys.exit(1)
 
+    result = ''
     for row in results:
-        print(row)
+        result += row[1] + ', '
+    result = result[:-2]
+    print(result)
 
     cur.close()
     conn.close()
