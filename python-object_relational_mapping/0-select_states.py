@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+create database
+"""
 import sys
 from sqlalchemy import create_engine, Column, Integer, String, MetaData
 from sqlalchemy.orm import sessionmaker
@@ -8,6 +11,9 @@ Base = declarative_base()
 
 
 class State(Base):
+    """
+        Base
+    """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True)
     name = Column(String(256), nullable=False)
