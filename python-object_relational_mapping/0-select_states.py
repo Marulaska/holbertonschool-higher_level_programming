@@ -1,20 +1,27 @@
 #!/usr/bin/python3
 
 import sys
-import MySQLdb
+from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table
+from sqlalchemy.orm import sessionmaker
 
 user = sys.argv[1]
 passwd = sys.argv[2]
 db = sys.argv[3]
 
-conn = MySQLdb.connect(
-        host="localhost", port=3306, user=user,
-        passwd=passwd, db=db, charset="utf8"
-        )
-cur = conn.cursor()
-cur.execute("SELECT * FROM states ORDER BY id ASC")
-query_rows = cur.fetchall()
-for row in query_rows:
-    print(row)
-cur.close()
-conn.close()
+engine = create_engine(f"mysql://{user}:{passwd}@localhost/{db}?charset=utf8")
+
+metadata = MetaData()
+states = Table('states', metadata,
+               Column('id', Integer, primary_key=True),
+               Column('name', String(255)),
+               )
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+result = session.query(states).order_by(states.c.id).all()
+
+for row in result:
+    print(f"({row.id}, '{row.name}')")
+
+session.close()
