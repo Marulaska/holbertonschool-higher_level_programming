@@ -1,37 +1,57 @@
 #!/usr/bin/python3
 """
-create database
+Script to list all states from the database hbtn_0e_0_usa.
 """
+
 import sys
-from sqlalchemy import create_engine, Column, Integer, String, MetaData
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+import MySQLdb
 
-Base = declarative_base()
-
-
-class State(Base):
+def list_states(mysql_user, mysql_password, db_name):
     """
-        Base
-    """
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(256), nullable=False)
+    Connects to the MySQL database and lists all states in ascending order by states.id.
 
+    Args:
+        mysql_user (str): MySQL username.
+        mysql_password (str): MySQL password.
+        db_name (str): Database name.
+
+    Returns:
+        None
+    """
+    try:
+        # Connect to the database
+        conn = MySQLdb.connect(
+            host="localhost", port=3306, user=mysql_user,
+            passwd=mysql_password, db=db_name, charset="utf8"
+        )
+    except MySQLdb.Error as e:
+        print(f"Error connecting to MySQL: {e}")
+        sys.exit(1)
+
+    # Create a cursor
+    cur = conn.cursor()
+
+    # Execute the SQL query and fetch the results
+    try:
+        cur.execute("SELECT * FROM states ORDER BY id ASC")
+        results = cur.fetchall()
+    except MySQLdb.Error as e:
+        print(f"Error executing SQL query: {e}")
+        cur.close()
+        conn.close()
+        sys.exit(1)
+
+    # Display the results
+    for row in results:
+        print(row)
+
+    # Close the cursor and connection
+    cur.close()
+    conn.close()
 
 if __name__ == "__main__":
-    user = sys.argv[1]
-    passwd = sys.argv[2]
-    db = sys.argv[3]
+    if len(sys.argv) != 4:
+        print("Usage: ./list_states.py <mysql_username> <mysql_password> <database_name>")
+        sys.exit(1)
 
-    engine = create_engine(
-        f"mysql://{user}:{passwd}@localhost/{db}?charset=utf8")
-
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    results = session.query(State).order_by(State.id).all()
-    for state in results:
-        print((state.id, state.name))
-
-    session.close()
+    list_states(sys.argv[1], sys.argv[2], sys.argv[3])
