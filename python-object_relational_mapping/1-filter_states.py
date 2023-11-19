@@ -21,7 +21,6 @@ def list_states(mysql_user, mysql_password, db_name):
         None
     """
     try:
-        # Connect to the database
         conn = MySQLdb.connect(
             host="localhost", port=3306, user=mysql_user,
             passwd=mysql_password, db=db_name, charset="utf8"
@@ -30,10 +29,8 @@ def list_states(mysql_user, mysql_password, db_name):
         print(f"Error connecting to MySQL: {e}")
         sys.exit(1)
 
-    # Create a cursor
     cur = conn.cursor()
 
-    # Execute the SQL query and fetch the results
     try:
         cur.execute(
             "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
@@ -44,11 +41,9 @@ def list_states(mysql_user, mysql_password, db_name):
         conn.close()
         sys.exit(1)
 
-    # Display the results
     for row in results:
         print(row)
 
-    # Close the cursor and connection
     cur.close()
     conn.close()
 
