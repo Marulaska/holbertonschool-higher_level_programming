@@ -35,7 +35,8 @@ def list_states(mysql_user, mysql_password, db_name):
 
     # Execute the SQL query and fetch the results
     try:
-        cur.execute("SELECT * FROM states ORDER BY id ASC")
+        cur.execute(
+            "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
         results = cur.fetchall()
     except MySQLdb.Error as e:
         print(f"Error executing SQL query: {e}")
