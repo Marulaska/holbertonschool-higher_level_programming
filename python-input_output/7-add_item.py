@@ -18,5 +18,4 @@ except FileNotFoundError:
 n = len(sys.argv)
 for i in range(1, n):
     my_list.append(sys.argv[i])
-    print(sys.argv[i])
 save_to_json_file(my_list, filename)
