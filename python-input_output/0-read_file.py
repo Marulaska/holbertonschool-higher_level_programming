@@ -2,7 +2,7 @@
 """
 read file
 """
-
+import os
 
 def read_file(filename=""):
     """
@@ -11,4 +11,4 @@ def read_file(filename=""):
     """
     with open(filename, 'r', encoding='utf-8') as file:
         content = file.read()
-    print(content)
+    os.write(1, content.encode())
