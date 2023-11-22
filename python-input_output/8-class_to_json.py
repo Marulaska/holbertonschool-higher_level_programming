@@ -4,6 +4,7 @@ import json
 
 
 def class_to_json(obj):
+    """class to json"""
     if not hasattr(obj, '__dict__'):
         raise ValueError
     obj_dict = obj.__dict__
@@ -14,6 +15,7 @@ def class_to_json(obj):
     return serializable_attributes
 
 def is_serializable(value):
+    """serializable"""
     if isinstance(value, (list, dict, str, int, bool)):
         return True
     elif hasattr(value, '__dict__'):
