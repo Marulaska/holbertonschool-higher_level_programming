@@ -2,7 +2,6 @@
 """
 json load
 """
-import json
 
 
 def class_to_json(obj):
