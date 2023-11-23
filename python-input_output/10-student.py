@@ -25,9 +25,9 @@ class Student:
         """
         if attrs is None:
             attrs = self.__dict__.keys()
-        
+
         serializable_attributes = {}
         for key in attrs:
-             if key in self.__dict__:
-                 serializable_attributes[key] = self.__dict__[key]
+            if key in self.__dict__:
+                serializable_attributes[key] = self.__dict__[key]
         return serializable_attributes
