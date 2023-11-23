@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-"""json load"""
+"""
+json load
+"""
 import json
 
 
 def class_to_json(obj):
-    """class to json"""
+    """
+    class to json
+    """
     if not hasattr(obj, '__dict__'):
         raise ValueError
     obj_dict = obj.__dict__
@@ -16,7 +20,9 @@ def class_to_json(obj):
 
 
 def is_serializable(value):
-    """serializable"""
+    """
+    definition serializable
+    """
     if isinstance(value, (list, dict, str, int, bool)):
         return True
     elif hasattr(value, '__dict__'):
