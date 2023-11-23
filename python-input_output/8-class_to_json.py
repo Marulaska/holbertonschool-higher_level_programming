@@ -14,6 +14,7 @@ def class_to_json(obj):
 
     return serializable_attributes
 
+
 def is_serializable(value):
     """serializable"""
     if isinstance(value, (list, dict, str, int, bool)):
